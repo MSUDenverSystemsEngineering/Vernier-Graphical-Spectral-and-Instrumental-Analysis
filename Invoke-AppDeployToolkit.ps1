@@ -93,17 +93,17 @@ param
 
 $adtSession = @{
     # App variables.
-    AppVendor = ''
-    AppName = ''
-    AppVersion = ''
-    AppArch = ''
-    AppLang = ''
+    AppVendor = 'Vernier'
+    AppName = 'Graphical Spectral Instrumental Analysis'
+    AppVersion = '6.2.2'
+    AppArch = 'x64'
+    AppLang = 'en-US'
     AppRevision = ''
     AppSuccessExitCodes = @(0)
     AppRebootExitCodes = @(1641, 3010)
     AppScriptVersion = '1.0.0'
-    AppScriptDate = 'YYYY-M-D'
-    AppScriptAuthor = ''
+    AppScriptDate = '11/21/2025'
+    AppScriptAuthor = 'Will Jarvill'
 
     # Install Titles (Only set here to override defaults set by the toolkit).
     InstallName = ''
@@ -152,8 +152,9 @@ function Install-ADTDeployment
     }
 
     ## <Perform Installation tasks here>
-
-
+    Start-ADTMSIProcess -Action 'Install' -FilePath 'Vernier-Graphical-Analysis-6.2.2-4032.msi' -ArgumentList '/qn /norestart'
+    Start-ADTMSIProcess -Action 'Install' -FilePath 'Vernier-Instrumental-Analysis-2.0.0-1994.msi' -ArgumentList '/qn /norestart'
+    Start-ADTMSIProcess -Action 'Install' -FilePath 'Vernier-Spectral-Analysis-5.1.0-2993.msi' -ArgumentList '/qn /norestart'
     ##================================================
     ## MARK: Post-Install
     ##================================================
@@ -201,7 +202,9 @@ function Uninstall-ADTDeployment
     }
 
     ## <Perform Uninstallation tasks here>
-
+    Start-ADTMSIProcess -Action 'Uninstall' -FilePath 'Vernier-Graphical-Analysis-6.2.2-4032.msi' -ArgumentList '/qn /norestart'
+    Start-ADTMSIProcess -Action 'Uninstall' -FilePath 'Vernier-Instrumental-Analysis-2.0.0-1994.msi' -ArgumentList '/qn /norestart'
+    Start-ADTMSIProcess -Action 'Uninstall' -FilePath 'Vernier-Spectral-Analysis-5.1.0-2993.msi' -ArgumentList '/qn /norestart'
 
     ##================================================
     ## MARK: Post-Uninstallation
